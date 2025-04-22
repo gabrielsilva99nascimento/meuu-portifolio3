@@ -6,8 +6,8 @@ const projects = [
         technologies: ["JavaScript", "HTML", "css3"],
         github: "https://github.com/gabrielsilva99nascimento/site-da-hamburgueria",
         images: [
-            "assets/images/projects/projeto1/1.jpg",
-            "assets/images/projects/projeto1/2.jpg"
+            "assets/images/projects/projeto1/dogshop1.jpg",
+            "assets/images/projects/projeto1/dogshop2.jpg"
         ]
     },
     {

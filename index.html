@@ -6,11 +6,11 @@
     <title>Silva Dev | Portfólio</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Seu conteúdo HTML permanece exatamente o mesmo -->
-    <!-- Cabeçalho -->
+
     <header>
         <div class="container">
             <h1 class="logo">Silva Dev</h1>
@@ -30,7 +30,8 @@
       <div class="container">
           <div class="hero-content">
               <h2 class="hero-title">Transformando Ideias em <span class="highlight">Soluções Digitais e Automações inteligentes!</span></h2>
-              <p class="hero-subtitle">Desenvolvedor Full Stack / RPA Crio soluções digitais que automatizam e vendem: sistemas web personalizados, robôs RPA e landing pages que convertem.</p>
+              <h3 class="hero-subtitle">Desenvolvedor Full Stack / RPA</p>
+              <p class="hero-description">Crio soluções digitais que automatizam e vendem: sistemas web personalizados, robôs RPA e landing pages que convertem.</p>
               <a href="#projetos" class="btn-hero">Explore Meus Projetos <i class="fas fa-arrow-right"></i></a>
           </div>
       </div>
@@ -47,16 +48,13 @@
     </section>
 
     <!-- Seção Sobre -->
-    <div class="about-me-container" id="sobre">
+    <section class="about-me-container" id="sobre">
         <h2 class="section-title"><span class="highlighted-title">Sobre Mim</span></h2>
         
         <div class="about-content">
-            <div class="about-content">
-                <!-- SUA FOTO AQUI (sugiro antes do <h3>) -->
-                <div class="profile-image-container">
-                    <!-- CORRETO (se a imagem estiver em /assets/images/profile/) -->
-                      <img src="./assets/images/profile/seu-perfil.jpg" alt="Gabriel Silva">
-                </div>
+            <div class="profile-image-container">
+                  <img src="assets\images\perfil.jpg" alt="Gabriel Silva">
+            </div>
             <h3>GABRIEL SILVA</h3>
             <p class="experience-text">Desenvolvedor Full Stack especializado em criar soluções digitais inteligentes. Transformo ideias em sites elegantes, landing pages de alta conversão e automações que simplificam processos. Minha paixão é unir design funcional com tecnologia eficiente para gerar resultados reais.</p>
             
@@ -71,7 +69,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Seção Contato -->
     <section id="contato" class="contact-form-section">
@@ -109,6 +107,7 @@
     <!-- Scripts -->
     <script src="projects-data.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Atualiza o ano no footer
