@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silva Dev | Portfólio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Seu conteúdo HTML permanece exatamente o mesmo -->
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Silva Dev</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="inicio" class="hero">
+      <div class="container">
+          <div class="hero-content">
+              <h2 class="hero-title">Transformando Ideias em <span class="highlight">Soluções Digitais e Automações inteligentes!</span></h2>
+              <p class="hero-subtitle">Desenvolvedor Full Stack / RPA Crio soluções digitais que automatizam e vendem: sistemas web personalizados, robôs RPA e landing pages que convertem.</p>
+              <a href="#projetos" class="btn-hero">Explore Meus Projetos <i class="fas fa-arrow-right"></i></a>
+          </div>
+      </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projetos" class="projects">
+        <div class="container">
+            <h2 class="section-title"><span class="highlighted-title">Meus Projetos</span></h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projetos carregados via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <div class="about-me-container" id="sobre">
+        <h2 class="section-title"><span class="highlighted-title">Sobre Mim</span></h2>
+        
+        <div class="about-content">
+            <div class="about-content">
+                <!-- SUA FOTO AQUI (sugiro antes do <h3>) -->
+                <div class="profile-image-container">
+                    <!-- CORRETO (se a imagem estiver em /assets/images/profile/) -->
+                      <img src="./assets/images/profile/seu-perfil.jpg" alt="Gabriel Silva">
+                </div>
+            <h3>GABRIEL SILVA</h3>
+            <p class="experience-text">Desenvolvedor Full Stack especializado em criar soluções digitais inteligentes. Transformo ideias em sites elegantes, landing pages de alta conversão e automações que simplificam processos. Minha paixão é unir design funcional com tecnologia eficiente para gerar resultados reais.</p>
+            
+            <div class="skills-section">
+                <h4>Tecnologias que domino:</h4>
+                <ul class="skills-list">
+                    <li><i class="fab fa-python"></i> Python</li>
+                    <li><i class="fab fa-js"></i> JavaScript</li>
+                    <li><i class="fab fa-html5"></i> HTML5</li>
+                    <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                    <li><i class="fas fa-code"></i> C#</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="contact-form-section">
+        <div class="container">
+            <h2 class="section-title"><span class="highlighted-title">Contato</span></h2>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder=" ">
+                    <label for="name">Seu nome</label>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder=" ">
+                    <label for="email">Seu e-mail</label>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                    <label for="message">Sua mensagem</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Silva Dev. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="projects-data.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Atualiza o ano no footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // EmailJS
+        emailjs.init('user_1234567890abcdef');
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            emailjs.sendForm('service_yygfd2g', 'template_v2a56th', this)
+                .then(() => {
+                    alert('Mensagem enviada com sucesso!');
+                    this.reset();
+                }, (error) => {
+                    alert('Erro ao enviar: ' + error.text);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Mensagem';
+                });
+        });
+
+        // Adiciona classe scrolled ao header quando scrollar
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Debug
+        console.log('Portfólio Silva Dev carregado com sucesso!');
+    </script>
+</body>
+</html>
