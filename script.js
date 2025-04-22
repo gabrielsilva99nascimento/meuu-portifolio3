@@ -5,26 +5,30 @@ document.addEventListener('DOMContentLoaded', function () {
     projects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
+
         projectCard.innerHTML = `
-    <div class="project-info">
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        <div class="project-links">
-            <a href="${project.github}" target="_blank">
-                <i class="fab fa-github"></i> Código
-            </a>
-            <a href="${project.demo || '#'}" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Demo
-            </a>
-            <a href="${project.images?.[0]}" data-lightbox="${project.title.toLowerCase()}" class="lightbox-trigger">
-                🖼️ Ver Imagens
-            </a>
-            ${project.images?.slice(1).map(img => `
-                <a href="${img}" data-lightbox="${project.title.toLowerCase()}" style="display: none;"></a>
-            `).join('')}
-        </div>
-    </div>
-`;
+            <div class="project-info">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div class="project-links">
+                    <a href="${project.github}" target="_blank" class="btn-link">
+                        <i class="fab fa-github"></i> Código
+                    </a>
+                    <a href="#" class="btn-link btn-demo">
+                        <i class="fas fa-external-link-alt"></i> Visualizar Projeto
+                    </a>
+                </div>
+            </div>
+        `;
+
+        const demoBtn = projectCard.querySelector('.btn-demo');
+        demoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (project.images?.length) {
+                openImageModal(project.images);
+            }
+        });
+
         projectsContainer.appendChild(projectCard);
     });
 
@@ -40,5 +44,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-// Substitua esta linha com sua chave pública REAL
-emailjs.init('sQYUTJvYCXRjTzXOh'); // Ex: emailjs.init('user_AbC123xyz987');
+
+let currentImages = [];
+let currentIndex = 0;
+
+const modal = document.getElementById("image-modal");
+const modalImg = document.getElementById("modal-image");
+const closeModal = document.getElementById("close-modal");
+const prevBtn = document.getElementById("prev-image");
+const nextBtn = document.getElementById("next-image");
+
+// Função para abrir modal com imagens
+function openImageModal(images) {
+    currentImages = images;
+    currentIndex = 0;
+    modalImg.src = currentImages[currentIndex];
+    modal.style.display = "flex";
+}
+
+// Navegação
+prevBtn.onclick = () => {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    modalImg.src = currentImages[currentIndex];
+};
+
+nextBtn.onclick = () => {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    modalImg.src = currentImages[currentIndex];
+};
+
+// Fechar modal
+closeModal.onclick = () => {
+    modal.style.display = "none";
+};
+
+emailjs.init('sQYUTJvYCXRjTzXOh');
